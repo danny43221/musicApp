@@ -68,7 +68,7 @@ app.use(limiter)
 app.use(hpp());
 
 //Mount routes
-app.use("/auth", auth);
+app.use("/api/v1/auth", auth);
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(
