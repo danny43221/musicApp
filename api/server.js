@@ -7,17 +7,25 @@ const connectDB = require("./config/db");
 const session = require("express-session");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
+const mongoSanitize = require("express-mongo-sanitize");
+const helmet = require("helmet");
+const xss = require("xss-clean");
+const rateLimit = require("express-rate-limit");
 
+//Load env vars
 dotenv.config({ path: "./config/config.env" });
 
+//Connect to database
 connectDB();
 
+//Route files
 const auth = require("./routes/auth");
+const hpp = require("hpp");
 
 const app = express();
 
 //Middleware
-app.use(express.json())
+app.use(express.json());
 
 if (process.env.NODE_ENV === "development") {
 	app.use(morgan("dev"));
@@ -37,10 +45,27 @@ app.use(
 		saveUninitialized: true,
 	})
 );
+
 app.use(cookieParser(process.env.SESSION_SECRET));
+
 app.use(passport.initialize());
 app.use(passport.session());
 require("./config/passport")(passport);
+
+//Security
+app.use(mongoSanitize());
+
+app.use(helmet());
+
+app.use(xss());
+
+const limiter = rateLimit({
+	windowMs: 10 * 60 * 1000,
+	max: 100,
+});
+app.use(limiter)
+
+app.use(hpp());
 
 //Mount routes
 app.use("/auth", auth);
