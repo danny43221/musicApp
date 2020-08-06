@@ -5,13 +5,14 @@ const crypto = require("crypto")
 const UserSchema = new mongoose.Schema({
 	email: {
 		type: String,
-		required: [true, "Please add a username"],
-		unique: true,
+		required: [true, "Email is required"],
+		match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please enter a valid email"],
+		unique: true
 	},
 	password: {
 		type: String,
-		minlength: 6,
-		required: [true, "Please add a password"],
+		minlength: 8,
+		required: [true, "Password is required"],
 		select: false
 	},
 	name: {

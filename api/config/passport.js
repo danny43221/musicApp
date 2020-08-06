@@ -5,14 +5,14 @@ module.exports = passport => {
 	const authenticateUser = async (email, password, done) => {
 		const user = await User.findOne({ email }).select('+password');
 		if (!user) {
-			return done(null, false);
+			return done('Incorrect email or password', false);
 		}
 		
 		const isMatch = await user.matchPassword(password);
 		if (isMatch) {
 			return done(null, user);
 		} else {
-			return done(null, false);
+			return done("Incorrect email or password", false);
 		}
 	};
 	passport.use(new LocalStrategy({usernameField: 'email'}, authenticateUser));
