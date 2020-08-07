@@ -69,11 +69,11 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
 
 		//Create reset url
 		const resetUrl = `${req.protocol}://localhost:3000/resetpassword/${resetToken}`;
-		const message = `You are receiving this email to reset password please send PUT request to: \n\n ${resetUrl}`;
+		const message = `You are receiving this email to reset password please follow this link and reset it: \n\n ${resetUrl}`;
 		try {
 			await sendEmail({
 				email: user.email,
-				subject: "Password reset token",
+				subject: "Password Reset",
 				message,
 			});
 		} catch (error) {
@@ -105,7 +105,7 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 	});
 
 	if (!user) {
-		return next(new ErrorResponse("Invalid token", 400));
+		return next(new ErrorResponse("Invalid reset token, we're unable to reset your password", 400));
 	}
 
 	user.password = req.body.password;

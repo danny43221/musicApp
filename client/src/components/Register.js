@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import axios from "../axios-api";
+import axios from "../shared/axios-api";
 import { useForm } from "react-hook-form";
 
 const Register = props => {
@@ -70,7 +70,7 @@ const Register = props => {
 					id="confirmpassword"
 					type="password"
 					ref={register({
-						validate: value => value == watch("password") || "Passwords don't match",
+						validate: value => value === watch("password") || "Passwords don't match",
 					})}
 				/>
 				<input type="submit" />

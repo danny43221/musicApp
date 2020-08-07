@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import axios from "../axios-api";
+import axios from "../shared/axios-api";
 
 const ForgotPassword = props => {
 	const { register, errors, handleSubmit } = useForm({

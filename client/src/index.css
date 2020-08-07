@@ -1,0 +1,44 @@
+
+:root {
+	--text-primary: #b6b6b6;
+	--text-secondary: #ececec;
+	--bg-primary: #23232e;
+	--bg-secondary: #141418;
+	--transition-speed: .4s;
+}
+
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.6rem;
+	box-sizing: border-box;
+	font-family: 'Nunito', sans-serif;
+	color: black;
+	background-color: white;
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+body::-webkit-scrollbar {
+	width: 0.40rem;
+}
+
+body::-webkit-scrollbar-track {
+	background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: #6649b8;
+}
+
+
+

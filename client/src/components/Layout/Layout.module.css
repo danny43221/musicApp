@@ -1,0 +1,10 @@
+.Content {
+   margin-left: 8rem;
+   padding: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+   .Content {
+      margin-left: 0;
+   }
+}

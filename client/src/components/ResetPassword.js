@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "../axios-api";
+import axios from "../shared/axios-api";
 import { useForm } from "react-hook-form";
 
 const ResetPassword = props => {
@@ -46,7 +46,7 @@ const ResetPassword = props => {
 					id="confirmpassword"
 					type="password"
 					ref={register({
-						validate: value => value == watch("password") || "Passwords don't match",
+						validate: value => value === watch("password") || "Passwords don't match",
 					})}
 				/>
 				<input type="submit" />
