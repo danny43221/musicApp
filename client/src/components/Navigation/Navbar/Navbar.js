@@ -1,10 +1,15 @@
 import React from "react";
 import classes from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
-import NavArrowIcon from "../../../assets/icons/NavArrowIcon";
-import NoteIcon from '../../../assets/icons/NoteIcon'
+import NavArrowIcon from "../../../assets/icons/duotone/NavArrowIcon";
+import NoteIcon from "../../../assets/icons/duotone/NoteIcon";
+import LogoutIcon from "../../../assets/icons/duotone/LogoutIcon"
+import UserIcon from "../../../assets/icons/duotone/UserIcon"
+import StarsIcon from "../../../assets/icons/duotone/StarsIcon"
 
 const Navbar = props => {
+	const iconPrimaryColor = getComputedStyle(document.documentElement).getPropertyValue('--pink-light');
+	const iconSecondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--pink-dark');
 	return (
 		<nav className={classes.Navbar}>
 			<ul className={classes.NavbarNav}>
@@ -16,18 +21,8 @@ const Navbar = props => {
 				</li>
 				<li className={classes.NavItem}>
 					<NavLink to="/home" className={classes.NavLink} activeClassName={classes.ActiveLink}>
-						<NavArrowIcon primary="#ff7eee" secondary="#df49a6" />
+                  <UserIcon primary={iconPrimaryColor} secondary={iconSecondaryColor} />
 						<span className={classes.LinkText}>Hello</span>
-					</NavLink>
-				</li>
-				<li className={classes.NavItem}>
-					<NavLink
-						to="/login"
-						className={classes.NavLink}
-						activeClassName={classes.ActiveLink}
-					>
-						<NavArrowIcon primary="#ff7eee" secondary="#df49a6" />
-						<span className={classes.LinkText}>Cats</span>
 					</NavLink>
 				</li>
 				<li className={classes.NavItem}>
@@ -36,8 +31,18 @@ const Navbar = props => {
 						className={classes.NavLink}
 						activeClassName={classes.ActiveLink}
 					>
-						<NoteIcon primary="#ff7eee" secondary="#df49a6" />
-						<span className={classes.LinkText}>Dogs</span>
+						<NoteIcon primary={iconPrimaryColor} secondary={iconSecondaryColor} />
+						<span className={classes.LinkText}>Find Match</span>
+					</NavLink>
+				</li>
+				<li className={classes.NavItem}>
+					<NavLink
+						to="/login"
+						className={classes.NavLink}
+						activeClassName={classes.ActiveLink}
+					>
+						<StarsIcon primary={iconPrimaryColor} secondary={iconSecondaryColor} />
+						<span className={classes.LinkText}>Leaderboards</span>
 					</NavLink>
 				</li>
 				<li className={classes.NavItem} style={{ marginTop: "auto" }}>
@@ -46,7 +51,7 @@ const Navbar = props => {
 						className={classes.NavLink}
 						activeClassName={classes.ActiveLink}
 					>
-						
+                  <LogoutIcon primary={iconPrimaryColor} secondary={iconSecondaryColor} />
 						<span className={classes.LinkText}>Logout</span>
 					</NavLink>
 				</li>

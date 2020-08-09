@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from '../shared/axios-api'
+import axios from '../../shared/axios-api'
 
 const Home = (props) => {
 

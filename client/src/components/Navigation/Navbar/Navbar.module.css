@@ -1,9 +1,13 @@
 .Navbar {
 	width: 8rem;
-   position: fixed;
-   height: 100vh;
+	position: fixed;
+	height: 100vh;
+	z-index: 1000;
+	overflow: hidden;
 	background-color: var(--bg-primary);
 	transition: width var(--transition-speed) ease;
+	box-shadow: 0px 8px 9px -5px rgba(0, 0, 0, 0.2), 0px 15px 22px 2px rgba(0, 0, 0, 0.14),
+		0px 6px 28px 5px rgba(0, 0, 0, 0.12);
 }
 
 .NavbarNav {
@@ -23,21 +27,26 @@
 	align-items: center;
 	height: 8rem;
 	color: var(--text-primary);
-   text-decoration: none;
-   filter: grayscale(100%) opacity(0.7);
-   transition: var(--transition-speed);
+	text-decoration: none;
+	filter: grayscale(100%) opacity(0.7);
+	transition: var(--transition-speed);
+}
+
+.NavLink:focus {
+	text-decoration: none;
 }
 
 .NavLink:hover {
 	filter: grayscale(0%) opacity(1);
 	background: var(--bg-secondary);
 	color: var(--text-secondary);
+	text-decoration: none;
 }
 
 .LinkText {
 	display: none;
-   margin-left: 1.6rem;
-   margin-bottom: .2rem;
+	margin-left: 1.6rem;
+	margin-bottom: 0.2rem;
 }
 
 .NavLink svg {
@@ -51,66 +60,70 @@
 
 .Navbar:hover .LinkText {
 	display: block;
+	white-space: nowrap;
 }
 
 .Logo {
-   font-weight: 700;
-   margin-bottom: 1.6rem;
-   text-align: center;
-   color: var(--text-secondary);
-   background: var(--bg-secondary);
-   font-size: 2.4rem;
-   letter-spacing: 0.3ch;
-   width: 100%;
-   user-select: none;
+	font-weight: 700;
+	margin-bottom: 1.6rem;
+	text-align: center;
+	color: var(--text-secondary);
+	background: var(--bg-secondary);
+	font-size: 2.4rem;
+	letter-spacing: 0.3ch;
+	width: 100%;
+	user-select: none;
 }
 
 .Logo svg {
-   transform: rotate(0deg);
-   transition: transform var(--transition-speed);
+	transform: rotate(0deg);
+	transition: transform var(--transition-speed);
 }
 
 .Navbar:hover .Logo svg {
-   transform: rotate(-180deg);
+	transform: rotate(-180deg);
 }
 
 .ActiveLink {
-   filter: grayscale(0%) opacity(1);
+	filter: grayscale(0%) opacity(1);
 	background: var(--bg-secondary);
 	color: var(--text-secondary);
 }
 
 .Navbar:hover .Logo .NavLink {
-   filter: grayscale(0%) opacity(1);
+	filter: grayscale(0%) opacity(1);
 	background: var(--bg-secondary);
 	color: var(--text-secondary);
 }
 
 @media only screen and (max-width: 600px) {
-   .Navbar {
-      bottom: 0;
-      width: 100vw;
-      height: 8rem;
-   }
+	.Navbar {
+		bottom: 0;
+		width: 100vw;
+		height: 8rem;
+	}
 
-   .NavbarNav {
-      flex-direction: row;
-   }
+	.NavbarNav {
+		flex-direction: row;
+		justify-content: space-evenly;
+		width: 100%;
+	}
 
-   .Navbar:hover {
-      width: 100vw;
-      color: #FFFFFFBB;
-   }
+	.Navbar:hover {
+		width: 100vw;
+		color: #ffffffbb;
+	}
 
-   .Navbar:hover .LinkText {
-      display: none;
-   }
+	.Navbar:hover .LinkText {
+		display: none;
+	}
 
-   .NavLink {
-      justify-content: center;
-   }
+	.NavLink {
+		justify-content: center;
+		flex: 1fr;
+	}
 
-   .Logo {
-      display: none;
-   }
+	.Logo {
+		display: none;
+	}
 }

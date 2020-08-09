@@ -1,0 +1,19 @@
+.LoginForm {
+   position: relative;
+}
+
+.ForgotLink {
+   position: absolute;
+   right: 0;
+   top: 63.7%;
+}
+
+.RegisterLink {
+   text-align: center;
+   margin-top: 1.7rem;
+}
+
+.ButtonContainer {
+   margin-top: 5.5rem;
+   text-align: center;
+}

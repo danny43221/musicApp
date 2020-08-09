@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import ForgotPassword from "./components/ForgotPassword";
-import ResetPassword from "./components/ResetPassword";
-import Home from "./components/Home";
-import Layout from "./components/Layout/Layout";
+import Register from "./containers/Register/Register";
+import Login from "./containers/Login/Login";
+import ForgotPassword from "./containers/ForgotPassword/ForgotPassword";
+import ResetPassword from "./containers/ResetPassword/ResetPassword";
+import Home from "./containers/Home/Home";
+import HomeLayout from "./components/Layouts/HomeLayout/HomeLayout";
 
 const App = props => {
 	const routes = (
@@ -21,7 +21,7 @@ const App = props => {
 	
 	return (
 		<div>
-			<Layout>{routes}</Layout>
+			<HomeLayout>{routes}</HomeLayout>
 		</div>
 	);
 };
