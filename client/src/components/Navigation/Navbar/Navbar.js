@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import classes from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
 import NavArrowIcon from "../../../assets/icons/duotone/NavArrowIcon";
@@ -6,8 +6,18 @@ import NoteIcon from "../../../assets/icons/duotone/NoteIcon";
 import LogoutIcon from "../../../assets/icons/duotone/LogoutIcon"
 import UserIcon from "../../../assets/icons/duotone/UserIcon"
 import StarsIcon from "../../../assets/icons/duotone/StarsIcon"
+import { AuthContext } from "../../../shared/AuthContext";
+import axios from '../../../shared/axios-api'
 
 const Navbar = props => {
+	const {setIsAuthenticated, setUser} = useContext(AuthContext);
+	const handleLogout = () => {
+		axios.get('/auth/logout').then((res) => {
+			setIsAuthenticated(false)
+			setUser(res.data)
+      })
+	}
+
 	const iconPrimaryColor = getComputedStyle(document.documentElement).getPropertyValue('--pink-light');
 	const iconSecondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--pink-dark');
 	return (
@@ -46,14 +56,13 @@ const Navbar = props => {
 					</NavLink>
 				</li>
 				<li className={classes.NavItem} style={{ marginTop: "auto" }}>
-					<NavLink
-						to="/forgotpassword"
+					<div
+						onClick={handleLogout}
 						className={classes.NavLink}
-						activeClassName={classes.ActiveLink}
 					>
                   <LogoutIcon primary={iconPrimaryColor} secondary={iconSecondaryColor} />
 						<span className={classes.LinkText}>Logout</span>
-					</NavLink>
+					</div>
 				</li>
 			</ul>
 		</nav>

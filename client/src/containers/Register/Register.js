@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../shared/axios-api";
 import { useForm } from "react-hook-form";
@@ -9,9 +9,12 @@ import classes from "./Register.module.css";
 import Button from "../../components/UI/Button/Button";
 import AuthLayout from "../../components/Layouts/AuthLayout/AuthLayout";
 import Oauth from "../../components/Oauth/Oauth";
-import Break from "../../components/UI/Break/Break"
+import Break from "../../components/UI/Break/Break";
+import { AuthContext } from "../../shared/AuthContext";
 
 const Register = props => {
+	const { setIsAuthenticated } = useContext(AuthContext);
+
 	const { handleSubmit, errors, setError, register, watch } = useForm({
 		reValidateMode: "onSubmit",
 		shouldFocusError: true,
@@ -24,7 +27,7 @@ const Register = props => {
 				axios
 					.post("auth/login", data)
 					.then(res => {
-						props.history.push("/home");
+						setIsAuthenticated(true);
 					})
 					.catch(err => {
 						props.history.push("/login");
@@ -93,9 +96,7 @@ const Register = props => {
 					})}
 				/>
 				<div className={classes.ButtonContainer}>
-					<Button color={buttonColor}>
-						register
-					</Button>
+					<Button color={buttonColor}>register</Button>
 				</div>
 			</form>
 			<div className={classes.LoginLink}>

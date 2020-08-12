@@ -7,7 +7,6 @@ const {
 	forgotPassword,
 	resetPassword,
 	google,
-	googleCallback,
 	facebook,
 	github
 } = require("../controllers/auth");

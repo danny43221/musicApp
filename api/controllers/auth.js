@@ -134,7 +134,7 @@ exports.facebook = asyncHandler(async (req, res, next) => {
 	passport.authenticate("facebook", { scope: ["email"] })(req, res, next);
 });
 
-// @desc      Github Oauth callback
+// @desc      Github Oauth
 // @route     GET /api/v1/auth/github
 // @access    Public
 exports.github = asyncHandler(async (req, res, next) => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../shared/axios-api";
 import { useForm } from "react-hook-form";
@@ -8,10 +8,12 @@ import LockIcon from "../../assets/icons/light/LockIcon";
 import classes from "./Login.module.css";
 import Button from "../../components/UI/Button/Button";
 import AuthLayout from "../../components/Layouts/AuthLayout/AuthLayout";
-import Oauth from '../../components//Oauth/Oauth'
-import Break from '../../components/UI/Break/Break'
+import Oauth from "../../components//Oauth/Oauth";
+import Break from "../../components/UI/Break/Break";
+import { AuthContext } from "../../shared/AuthContext";
 
 const Login = props => {
+	const { setIsAuthenticated } = useContext(AuthContext);
 	const { register, errors, handleSubmit, setError } = useForm({
 		reValidateMode: "onSubmit",
 		shouldFocusError: true,
@@ -21,7 +23,7 @@ const Login = props => {
 		axios
 			.post("/auth/login", data)
 			.then(res => {
-				props.history.push("/home");
+				setIsAuthenticated(true);
 			})
 			.catch(err => {
 				const email = document.getElementById("email");
@@ -39,7 +41,7 @@ const Login = props => {
 
 	const emailError = errors.email ? errors.email.message : null;
 	const passwordError = errors.password ? errors.password.message : null;
-	
+
 	const buttonColor = getComputedStyle(document.documentElement).getPropertyValue("--pink-dark");
 
 	return (
