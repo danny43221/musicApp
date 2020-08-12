@@ -1,0 +1,19 @@
+.Break {
+   display: flex;
+   padding: 4rem 0;
+   align-items: center;
+}
+
+.BreakText {
+   margin: 0 1rem;
+   font-size: 1rem;
+   text-transform: uppercase;
+}
+
+.Line {
+   height: 1px;
+   width: 100%;
+   background-color: var(--text-primary);
+   
+   flex: 1fr;
+}

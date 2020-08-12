@@ -8,6 +8,8 @@ import LockIcon from "../../assets/icons/light/LockIcon";
 import classes from "./Register.module.css";
 import Button from "../../components/UI/Button/Button";
 import AuthLayout from "../../components/Layouts/AuthLayout/AuthLayout";
+import Oauth from "../../components/Oauth/Oauth";
+import Break from "../../components/UI/Break/Break"
 
 const Register = props => {
 	const { handleSubmit, errors, setError, register, watch } = useForm({
@@ -41,9 +43,13 @@ const Register = props => {
 	const emailError = errors.email ? errors.email.message : null;
 	const passwordError = errors.password ? errors.password.message : null;
 	const confirmPasswordError = errors.confirmpassword ? errors.confirmpassword.message : null;
+
 	const buttonColor = getComputedStyle(document.documentElement).getPropertyValue("--pink-dark");
+
 	return (
 		<AuthLayout>
+			<Oauth />
+			<Break>or</Break>
 			<form onSubmit={handleSubmit(onSubmit)} className={classes.RegisterForm}>
 				<Input
 					name="email"

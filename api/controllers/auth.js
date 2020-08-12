@@ -105,7 +105,9 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 	});
 
 	if (!user) {
-		return next(new ErrorResponse("Invalid reset token, we're unable to reset your password", 400));
+		return next(
+			new ErrorResponse("Invalid reset token, we're unable to reset your password", 400)
+		);
 	}
 
 	user.password = req.body.password;
@@ -114,4 +116,27 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 	await user.save();
 
 	res.status(200).json({ success: true, data: user });
+});
+
+//Oauth strategies
+
+// @desc      Google Oauth
+// @route     GET /api/v1/auth/google
+// @access    Public
+exports.google = asyncHandler(async (req, res, next) => {
+	passport.authenticate("google", { scope: ["profile", "email"] })(req, res, next);
+});
+
+// @desc      Facebook Oauth
+// @route     GET /api/v1/auth/facebook
+// @access    Public
+exports.facebook = asyncHandler(async (req, res, next) => {
+	passport.authenticate("facebook", { scope: ["email"] })(req, res, next);
+});
+
+// @desc      Github Oauth callback
+// @route     GET /api/v1/auth/github
+// @access    Public
+exports.github = asyncHandler(async (req, res, next) => {
+	passport.authenticate("github", { scope: ["user:email"] })(req, res, next);
 });

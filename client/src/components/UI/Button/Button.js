@@ -5,15 +5,14 @@ const Button = props => {
 	const { color, outlined, width, children, ...rest } = props;
 	let style = {
 		backgroundColor: color,
-		border: "2px solid " + color,
+		border: "1.5px solid " + color,
 		width
 	};
 	if (outlined) {
 		style = {
+			...style,
 			color,
 			backgroundColor: "transparent",
-			border: "2px solid " + color,
-			width
 		};
 	}
 

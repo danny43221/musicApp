@@ -11,6 +11,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
 const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
+const hpp = require("hpp");
 
 //Load env vars
 dotenv.config({ path: "./config/config.env" });
@@ -20,7 +21,6 @@ connectDB();
 
 //Route files
 const auth = require("./routes/auth");
-const hpp = require("hpp");
 
 const app = express();
 
@@ -35,6 +35,7 @@ app.use(
 	cors({
 		origin: "http://localhost:3000",
 		credentials: true,
+		
 	})
 );
 
@@ -50,6 +51,8 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+//Configure passport strategies
 require("./config/passport")(passport);
 
 //Security

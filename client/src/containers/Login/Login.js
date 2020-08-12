@@ -8,6 +8,8 @@ import LockIcon from "../../assets/icons/light/LockIcon";
 import classes from "./Login.module.css";
 import Button from "../../components/UI/Button/Button";
 import AuthLayout from "../../components/Layouts/AuthLayout/AuthLayout";
+import Oauth from '../../components//Oauth/Oauth'
+import Break from '../../components/UI/Break/Break'
 
 const Login = props => {
 	const { register, errors, handleSubmit, setError } = useForm({
@@ -37,10 +39,13 @@ const Login = props => {
 
 	const emailError = errors.email ? errors.email.message : null;
 	const passwordError = errors.password ? errors.password.message : null;
-
+	
 	const buttonColor = getComputedStyle(document.documentElement).getPropertyValue("--pink-dark");
+
 	return (
 		<AuthLayout>
+			<Oauth />
+			<Break>or</Break>
 			<form onSubmit={handleSubmit(onSubmit)} className={classes.LoginForm}>
 				<Input
 					name="email"
