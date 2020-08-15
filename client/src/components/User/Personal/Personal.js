@@ -5,7 +5,7 @@ import classes from "./Personal.module.css";
 const Personal = props => {
 	return (
 		<div className={classes.Personal}>
-			<Paper><h3 className={classes.CardHeader}>Personal</h3>{props.name}</Paper>
+			<Paper><h3 className={classes.CardHeader}>Personal</h3>{props.name}, {props.description}</Paper>
 		</div>
 	);
 };

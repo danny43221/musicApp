@@ -29,11 +29,19 @@ exports.getUser = asyncHandler(async (req, res, next) => {
 // @route     PUT /api/v1/users/
 // @access    Private
 exports.updateUser = asyncHandler(async (req, res, next) => {
-	const { name, description } = req.body;
-	const updateFields = { name, description };
+	const updateFields = {}
+
+	if (req.body.name) {
+		updateFields['name'] = req.body.name
+	}
+
+	if (req.body.description !== undefined) {
+		updateFields['description'] = req.body.description
+	}
+
 	const user = await User.findByIdAndUpdate(req.user.id, updateFields, {
 		new: true,
-		runValidators: true,
+		runValidators: true
 	});
 
 	res.status(200).json({

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Register from "./containers/Register/Register";
 import Login from "./containers/Login/Login";
@@ -8,20 +8,25 @@ import HomeLayout from "./components/Layouts/HomeLayout/HomeLayout";
 import axios from "./shared/axios-api";
 import { AuthContext } from "./shared/AuthContext";
 import Profile from "./containers/Profile/Profile";
+import Loader from './components/UI/Loader/Loader'
 
 const App = props => {
+	const [isLoading, setIsLoading] = useState(false)
 	const { isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);
 
 	useEffect(() => {
+		setIsLoading(true)
 		axios
 			.get("/auth/me")
 			.then(res => {
 				setIsAuthenticated(true);
 				setUser(res.data.data);
+				setIsLoading(false)
 			})
 			.catch(e => {
 				setIsAuthenticated(false);
 				setUser({});
+				setIsLoading(false)
 			});
 	}, []);
 
@@ -44,6 +49,12 @@ const App = props => {
 				</Switch>
 			</HomeLayout>
 		);
+	}
+
+	if (isLoading) {
+		routes = (
+			<Loader />
+		)
 	}
 
 	return <div>{routes}</div>;

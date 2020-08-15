@@ -10,7 +10,7 @@ const Profile = props => {
 	const { user } = useContext(AuthContext);
 	return (
 		<div className={classes.Profile}>
-			<Personal name={user.email} />
+			<Personal name={user.name} description={user.description} />
 			<WinLoss wins={5} losses={34} />
 			<NoteAccuracy accuracy={30} />
 			<LastGames
