@@ -14,11 +14,10 @@ const App = props => {
 
 	useEffect(() => {
 		axios
-			.get("/auth/user")
+			.get("/auth/me")
 			.then(res => {
 				setIsAuthenticated(true);
 				setUser(res.data.data);
-				
 			})
 			.catch(e => {
 				setIsAuthenticated(false);

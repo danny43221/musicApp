@@ -13,7 +13,7 @@ import Break from "../../components/UI/Break/Break";
 import { AuthContext } from "../../shared/AuthContext";
 
 const Login = props => {
-	const { setIsAuthenticated } = useContext(AuthContext);
+	const { setIsAuthenticated, setUser } = useContext(AuthContext);
 	const { register, errors, handleSubmit, setError } = useForm({
 		reValidateMode: "onSubmit",
 		shouldFocusError: true,
@@ -24,6 +24,7 @@ const Login = props => {
 			.post("/auth/login", data)
 			.then(res => {
 				setIsAuthenticated(true);
+				setUser(res.data.data)
 			})
 			.catch(err => {
 				const email = document.getElementById("email");

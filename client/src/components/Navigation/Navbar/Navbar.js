@@ -14,7 +14,7 @@ const Navbar = props => {
 	const handleLogout = () => {
 		axios.get('/auth/logout').then((res) => {
 			setIsAuthenticated(false)
-			setUser(res.data)
+			setUser({})
       })
 	}
 

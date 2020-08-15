@@ -14,12 +14,13 @@
    margin-top: -1rem;
    text-transform: capitalize;
    text-align: center;
+   font-size: 1.2vw;
 }
 
 .Value {
    display: flex;
    align-items: center;
-   font-size: 5.5rem;
+   font-size: 3.5vw;
    justify-content: center;
    font-weight: 300;
 }
@@ -29,7 +30,7 @@
 }
 
 .PercentSymbol {
-   font-size: 2rem;
+   font-size: 1.2vw;
    color: var(--text-primary);
 }
 

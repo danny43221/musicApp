@@ -38,22 +38,16 @@ exports.login = asyncHandler(async (req, res, next) => {
 });
 
 // @desc      Get current user
-// @route     GET /api/v1/auth/user
-// @access    Public
-exports.getUser = asyncHandler((req, res, next) => {
-	if (!req.user) {
-		return next(new ErrorResponse("No user is currently logged in", 400));
-	}
+// @route     GET /api/v1/auth/me
+// @access    Private
+exports.getMe = asyncHandler((req, res, next) => {
 	res.status(200).json({ success: true, data: req.user });
 });
 
 // @desc      Logout user
 // @route     GET /api/v1/auth/logout
-// @access    Public
+// @access    Private
 exports.logout = asyncHandler((req, res, next) => {
-	if (!req.user) {
-		return next(new ErrorResponse("No user is currently logged in", 400));
-	}
 	req.logout();
 	res.status(200).json({ success: true, data: {} });
 });
@@ -127,6 +121,13 @@ exports.google = asyncHandler(async (req, res, next) => {
 	passport.authenticate("google", { scope: ["profile", "email"] })(req, res, next);
 });
 
+// @desc      Google Oauth callback
+// @route     GET /api/v1/auth/google/callback
+// @access    Public
+exports.googleCallback = asyncHandler(async (req, res, next) => {
+	passport.authenticate("google", { failureRedirect: "/login" })(req, res, next);
+});
+
 // @desc      Facebook Oauth
 // @route     GET /api/v1/auth/facebook
 // @access    Public
@@ -134,9 +135,24 @@ exports.facebook = asyncHandler(async (req, res, next) => {
 	passport.authenticate("facebook", { scope: ["email"] })(req, res, next);
 });
 
-// @desc      Github Oauth
+// @desc      Facebook Oauth callback
+// @route     GET /api/v1/auth/facebook/callback
+// @access    Public
+exports.facebookCallback = asyncHandler(async (req, res, next) => {
+	passport.authenticate("facebook", { failureRedirect: "/login" })(req, res, next);
+});
+
+// @desc      Github Oauth 
 // @route     GET /api/v1/auth/github
 // @access    Public
 exports.github = asyncHandler(async (req, res, next) => {
 	passport.authenticate("github", { scope: ["user:email"] })(req, res, next);
+});
+
+
+// @desc      Github Oauth callback
+// @route     GET /api/v1/auth/github/callback
+// @access    Public
+exports.githubCallback = asyncHandler(async (req, res, next) => {
+	passport.authenticate("github", { failureRedirect: "/login" })(req, res, next);
 });

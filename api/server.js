@@ -21,6 +21,7 @@ connectDB();
 
 //Route files
 const auth = require("./routes/auth");
+const users = require("./routes/users")
 
 const app = express();
 
@@ -62,17 +63,17 @@ app.use(helmet());
 
 app.use(xss());
 
-
-// const limiter = rateLimit({
-// 	windowMs: 10 * 60 * 1000,
-// 	max: 100,
-// });
-// app.use(limiter)
+const limiter = rateLimit({
+	windowMs: 10 * 60 * 1000,
+	max: 100,
+});
+app.use(limiter)
 
 app.use(hpp());
 
 //Mount routes
 app.use("/api/v1/auth", auth);
+app.use("/api/v1/users", users)
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(
