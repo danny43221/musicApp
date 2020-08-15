@@ -7,7 +7,7 @@ const AuthLayout = props => {
 	return (
 		<div className={classes.Layout}>
 			<main className={classes.Content}>
-				<Paper><LogoIcon />{props.children}</Paper>
+				<Paper style={{padding: '5rem'}}>{props.children}</Paper>
 			</main>
 		</div>
 	);

@@ -1,0 +1,54 @@
+.PercentChart {
+	position: relative;
+	width: 100%
+}
+
+.Label {
+   position: absolute;
+   left: 50%;
+	top: 45%;
+   transform: translate(-50%, -50%);
+}
+
+.LabelText {
+   margin-top: -1rem;
+   text-transform: capitalize;
+   text-align: center;
+}
+
+.Value {
+   display: flex;
+   align-items: center;
+   font-size: 5.5rem;
+   justify-content: center;
+   font-weight: 300;
+}
+
+.Percent {
+   color: var(--text-secondary);
+}
+
+.PercentSymbol {
+   font-size: 2rem;
+   color: var(--text-primary);
+}
+
+.Circle {
+	stroke: var(--blue-dark);
+   fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+	animation: progress 1.5s ease-out forwards;
+}
+
+.CircleBackground {
+   fill: none;
+   stroke: var(--bg-secondary);
+   stroke-width: 2;
+}
+
+@keyframes progress {
+   0% {
+     stroke-dasharray: 0 100;
+   }
+ }

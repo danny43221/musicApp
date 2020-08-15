@@ -4,10 +4,10 @@ import Register from "./containers/Register/Register";
 import Login from "./containers/Login/Login";
 import ForgotPassword from "./containers/ForgotPassword/ForgotPassword";
 import ResetPassword from "./containers/ResetPassword/ResetPassword";
-import Home from "./containers/Home/Home";
 import HomeLayout from "./components/Layouts/HomeLayout/HomeLayout";
 import axios from "./shared/axios-api";
 import { AuthContext } from "./shared/AuthContext";
+import Profile from "./containers/Profile/Profile";
 
 const App = props => {
 	const { isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);
@@ -24,7 +24,7 @@ const App = props => {
 				setIsAuthenticated(false);
 				setUser({});
 			});
-	}, [isAuthenticated]);
+	}, []);
 
 	let routes = (
 		<Switch>
@@ -40,8 +40,8 @@ const App = props => {
 		routes = (
 			<HomeLayout>
 				<Switch>
-					<Route path="/user" component={Home} />
-					<Redirect to="/user" />
+					<Route path="/profile" component={Profile} />
+					<Redirect to="/profile" />
 				</Switch>
 			</HomeLayout>
 		);

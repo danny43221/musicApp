@@ -1,0 +1,10 @@
+.Personal {
+   grid-column: 1 / -1;
+}
+
+.CardHeader {
+   color: var(--text-primary);
+   font-size: 1.8rem;
+   margin-bottom: 1.8rem;
+   font-weight: 600;
+}

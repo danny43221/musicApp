@@ -1,4 +1,6 @@
-
+.Layout {
+   padding: 5rem;
+}
 .Content {
    width: 60rem;
    margin: 0 auto;

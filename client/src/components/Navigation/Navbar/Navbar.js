@@ -30,9 +30,9 @@ const Navbar = props => {
 					</div>
 				</li>
 				<li className={classes.NavItem}>
-					<NavLink to="/home" className={classes.NavLink} activeClassName={classes.ActiveLink}>
+					<NavLink to="/profile" className={classes.NavLink} activeClassName={classes.ActiveLink}>
                   <UserIcon primary={iconPrimaryColor} secondary={iconSecondaryColor} />
-						<span className={classes.LinkText}>Hello</span>
+						<span className={classes.LinkText}>Profile</span>
 					</NavLink>
 				</li>
 				<li className={classes.NavItem}>

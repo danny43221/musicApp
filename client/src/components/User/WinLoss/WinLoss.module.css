@@ -1,0 +1,64 @@
+.Ratio {
+   text-align: right;
+   margin-left: .43rem;
+}
+
+.RatioValue {
+   margin-right: -.95rem;
+   color: var(--text-secondary);
+   margin-bottom: -.6rem;
+}
+
+.CardHeader {
+   color: var(--text-primary);
+   font-size: 1.8rem;
+   margin-bottom: 1.8rem;
+   font-weight: 600;
+}
+
+.WinBar {
+   height: 2rem;
+   border-radius: 1.8rem;
+   display: inline-block;
+   background-image: linear-gradient(to right,rgb(219, 219, 219), 20%, var(--blue-dark));
+
+}
+
+.LossBar {
+   height: 2rem;
+   display: inline-block;
+   border-radius: 1.8rem;
+   background-image: linear-gradient(to left, rgb(219, 219, 219), 20%, var(--pink-dark));
+}
+
+.WinSquare {
+   width: 1rem;
+   margin-right: 1rem;
+   height: 1rem;
+   border-radius: 100%;
+   background-color: var(--blue-dark)
+}
+
+.LossSquare {
+   width: 1rem;
+   height: 1rem;
+   margin-right: 1rem;
+   border-radius: 100%;
+   background-color: var(--pink-dark)
+}
+
+.Legend {
+   margin-top: 3rem;
+}
+
+
+.LegendSect {
+   display: flex;
+   align-items: center;
+   margin-top: 1rem;
+}
+
+.LegendValue {
+   color: var(--text-secondary);
+   margin-left: 1.5rem;
+}
