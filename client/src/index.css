@@ -19,6 +19,7 @@ html {
 }
 
 body {
+	position: relative;
 	font-size: 1.6rem;
 	box-sizing: border-box;
 	font-family: 'Nunito', sans-serif;

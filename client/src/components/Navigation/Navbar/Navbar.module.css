@@ -2,7 +2,7 @@
 	width: 8rem;
 	position: fixed;
 	height: 100vh;
-	z-index: 1000;
+	z-index: 100;
 	overflow: hidden;
 	background-color: var(--bg-primary);
 	transition: width var(--transition-speed) ease;

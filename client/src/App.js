@@ -8,40 +8,44 @@ import HomeLayout from "./components/Layouts/HomeLayout/HomeLayout";
 import axios from "./shared/axios-api";
 import { AuthContext } from "./shared/AuthContext";
 import Profile from "./containers/Profile/Profile";
-import Loader from './components/UI/Loader/Loader'
+import Loader from "./components/UI/Loader/Loader";
 
 const App = props => {
-	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(true);
 	const { isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);
 
 	useEffect(() => {
-		setIsLoading(true)
+		setIsLoading(true);
 		axios
 			.get("/auth/me")
 			.then(res => {
 				setIsAuthenticated(true);
 				setUser(res.data.data);
-				setIsLoading(false)
+				setIsLoading(false);
 			})
 			.catch(e => {
 				setIsAuthenticated(false);
 				setUser({});
-				setIsLoading(false)
+				setIsLoading(false);
 			});
 	}, []);
 
-	let routes = (
-		<Switch>
-			<Route path="/register" component={Register} />
-			<Route path="/login" component={Login} />
-			<Route path="/forgotpassword" component={ForgotPassword} />
-			<Route path="/resetpassword/:token" component={ResetPassword} />
-			<Redirect to="/register" />
-		</Switch>
-	);
-
-	if (isAuthenticated) {
-		routes = (
+	let content;
+	if (isLoading) {
+		content = (
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "center",
+					height: "100vh",
+				}}
+			>
+				<Loader />
+			</div>
+		);
+	} else if (isAuthenticated) {
+		content = (
 			<HomeLayout>
 				<Switch>
 					<Route path="/profile" component={Profile} />
@@ -49,15 +53,19 @@ const App = props => {
 				</Switch>
 			</HomeLayout>
 		);
+	} else {
+		content = (
+			<Switch>
+				<Route path="/register" component={Register} />
+				<Route path="/login" component={Login} />
+				<Route path="/forgotpassword" component={ForgotPassword} />
+				<Route path="/resetpassword/:token" component={ResetPassword} />
+				<Redirect to="/register" />
+			</Switch>
+		);
 	}
 
-	if (isLoading) {
-		routes = (
-			<Loader />
-		)
-	}
-
-	return <div>{routes}</div>;
+	return <div>{content}</div>;
 };
 
 export default App;
