@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../shared/axios-api";
 import { useForm } from "react-hook-form";
-import Input from "../../components/UI/Input/Input";
+import TextInput from "../../components/UI/Inputs/TextInput/TextInput"
 import EnvelopeIcon from "../../assets/icons/light/EnvelopeIcon";
 import LockIcon from "../../assets/icons/light/LockIcon";
 import classes from "./Login.module.css";
@@ -50,7 +50,7 @@ const Login = props => {
 			<Oauth />
 			<Break>or</Break>
 			<form onSubmit={handleSubmit(onSubmit)} className={classes.LoginForm}>
-				<Input
+				<TextInput
 					name="email"
 					id="email"
 					Icon={EnvelopeIcon}
@@ -64,7 +64,7 @@ const Login = props => {
 						},
 					})}
 				/>
-				<Input
+				<TextInput
 					name="password"
 					type="password"
 					label="password"

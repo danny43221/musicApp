@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "../../shared/axios-api";
 import { useForm } from "react-hook-form";
-import Input from "../../components/UI/Input/Input";
+import TextInput from "../../components/UI/Inputs/TextInput/TextInput";
 import LockIcon from "../../assets/icons/light/LockIcon";
 import classes from "./ResetPassword.module.css";
 import Button from "../../components/UI/Button/Button";
@@ -32,7 +32,7 @@ const ResetPassword = props => {
 	return (
 		<AuthLayout>
 			<form onSubmit={handleSubmit(onSubmit)} className={classes.ResetPasswordForm}>
-				<Input
+				<TextInput
 					Icon={LockIcon}
 					name="password"
 					label="new password"
@@ -47,7 +47,7 @@ const ResetPassword = props => {
 						},
 					})}
 				/>
-				<Input
+				<TextInput
 					name="confirmpassword"
 					Icon={LockIcon}
 					errorMessage={confirmPasswordError}

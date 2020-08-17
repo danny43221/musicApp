@@ -55,3 +55,16 @@ a {
 a:hover, a:focus {
 	text-decoration: underline;
 }
+
+
+textarea::-webkit-scrollbar {
+	width: 0.40rem;
+}
+
+textarea::-webkit-scrollbar-track {
+	background: #1e1e24;
+}
+
+textarea::-webkit-scrollbar-thumb {
+	background: var(--text-primary);
+}

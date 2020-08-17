@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./Input.module.css";
+import classes from "./TextInput.module.css"
 
-const Input = props => {
+const TextInput = props => {
 	const { name, register, Icon, errorMessage, label, ...rest } = props;
 	let inputIcon = null;
 	if (Icon) {
@@ -29,4 +29,4 @@ const Input = props => {
 	);
 };
 
-export default Input;
+export default TextInput;

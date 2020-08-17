@@ -9,8 +9,8 @@ const Modal = props => {
 	const modalStyle = {
 		overlay: {
 			zIndex: "500",
-			backgroundColor: "rgba(150, 150, 150, .6)",
-			backdropFilter: "blur(2px)",
+			backgroundColor: "rgba(140, 140, 152, .50)",
+			backdropFilter: "blur(2.5px)",
 		},
 		content: {
 			top: "50%",
@@ -31,7 +31,7 @@ const Modal = props => {
    
 	return (
 		<ReactModal
-			isOpen={props.isOpen}
+			isOpen={props.show}
 			style={modalStyle}
 			onRequestClose={props.onClose}
 			shouldCloseOnOverlayClick

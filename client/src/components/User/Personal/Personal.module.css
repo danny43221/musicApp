@@ -8,3 +8,10 @@
    margin-bottom: 1.8rem;
    font-weight: 600;
 }
+
+.ButtonsContainer {
+   display: flex;
+   justify-content: space-between;
+   width: 40rem;
+   margin-top: 5rem;
+}

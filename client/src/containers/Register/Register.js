@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../shared/axios-api";
 import { useForm } from "react-hook-form";
-import Input from "../../components/UI/Input/Input";
+import TextInput from "../../components/UI/Inputs/TextInput/TextInput";
 import EnvelopeIcon from "../../assets/icons/light/EnvelopeIcon";
 import LockIcon from "../../assets/icons/light/LockIcon";
 import classes from "./Register.module.css";
@@ -55,7 +55,7 @@ const Register = props => {
 			<Oauth />
 			<Break>or</Break>
 			<form onSubmit={handleSubmit(onSubmit)} className={classes.RegisterForm}>
-				<Input
+				<TextInput
 					name="email"
 					id="email"
 					label="Email"
@@ -69,7 +69,7 @@ const Register = props => {
 						},
 					})}
 				/>
-				<Input
+				<TextInput
 					name="password"
 					id="password"
 					Icon={LockIcon}
@@ -84,7 +84,7 @@ const Register = props => {
 						},
 					})}
 				/>
-				<Input
+				<TextInput
 					name="confirmpassword"
 					id="confirmpassword"
 					type="password"

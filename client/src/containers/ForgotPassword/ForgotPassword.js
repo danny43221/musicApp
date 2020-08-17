@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "../../shared/axios-api";
-import Input from "../../components/UI/Input/Input";
+import TextInput from "../../components/UI/Inputs/TextInput/TextInput";
 import EnvelopeIcon from "../../assets/icons/light/EnvelopeIcon";
 import classes from "./ForgotPassword.module.css";
 import Button from "../../components/UI/Button/Button";
@@ -29,7 +29,7 @@ const ForgotPassword = props => {
 	return (
 		<AuthLayout>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<Input
+				<TextInput
 					name="email"
 					id="email"
 					label="email"

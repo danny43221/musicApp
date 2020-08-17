@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema({
 	},
 	description: {
 		type: String,
-		maxlength: 50,
+		maxlength: 280,
 		default: 'Has not written a description yet'
 	},
 	resetPasswordToken: String,

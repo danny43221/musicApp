@@ -1,8 +1,6 @@
 import React from "react";
 import Button from "../UI/Button/Button";
-import GoogleIcon from "../../assets/icons/logo/GoogleIcon";
-import FacebookIcon from "../../assets/icons/logo/FacebookIcon"
-import GithubIcon from '../../assets/icons/logo/GithubIcon'
+import { FacebookIcon, GithubIcon, GoogleIcon } from "../../assets/icons/logo";
 import classes from "./Oauth.module.css";
 
 const Oauth = props => {
@@ -34,7 +32,7 @@ const Oauth = props => {
 				</a>
 			</div>
 
-         <div className={classes.ButtonContainer} style={{padding: '0'}}>
+			<div className={classes.ButtonContainer} style={{ padding: "0" }}>
 				<a href="http://localhost:5000/api/v1/auth/github">
 					<Button color={buttonColor} outlined width="100%">
 						<div className={classes.IconContainer}>
