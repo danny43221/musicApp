@@ -5,8 +5,10 @@ import Modal from "../../UI/Modal/Modal";
 import Button from "../../UI/Button/Button";
 import TextInput from "../../UI/Inputs/TextInput/TextInput";
 import TextField from "../../UI/Inputs/TextField/TextField";
+import Select from "../../UI/Inputs/Select/Select";
 import { useForm } from "react-hook-form";
 import axios from "../../../shared/axios-api";
+import instruments from "../../../shared/instruments";
 
 const Personal = props => {
 	const { register, errors, handleSubmit } = useForm({
@@ -16,18 +18,23 @@ const Personal = props => {
 
 	const onSubmit = data => {
 		axios.put("/users", data).then(res => {
-			props.setUser(res.data.data)
-			props.onCloseModal()
+			props.setUser(res.data.data);
+			props.onCloseModal();
 		});
 	};
+
+	const InstrumentIcon = instruments[props.instrument];
 
 	const nameError = errors.name ? errors.name.message : null;
 	const descError = errors.description ? errors.description.message : null;
 
-	const primaryButtonColor = getComputedStyle(document.documentElement).getPropertyValue(
+	const pinkDark = getComputedStyle(document.documentElement).getPropertyValue(
 		"--pink-dark"
 	);
-	const secondaryButtonColor = getComputedStyle(document.documentElement).getPropertyValue(
+	const pinkLight = getComputedStyle(document.documentElement).getPropertyValue(
+		"--pink-light"
+	);
+	const textPrimary = getComputedStyle(document.documentElement).getPropertyValue(
 		"--text-primary"
 	);
 
@@ -52,6 +59,24 @@ const Personal = props => {
 								},
 							})}
 						/>
+						<Select
+							defaultValue={props.instrument}
+							name="instrument"
+							id="instrument"
+							label="instrument"
+							register={register}
+						>
+							<option value="none">None</option>
+							<option value="clarinet">Clarinet</option>
+							<option value="flute">Flute</option>
+							<option value="guitar">Guitar</option>
+							<option value="percussion">Percussion</option>
+							<option value="piano">Piano</option>
+							<option value="saxophone">Saxophone</option>
+							<option value="trumpet">Trumpet</option>
+							<option value="violin">Violin</option>
+							<option value="vocals">Vocals</option>
+						</Select>
 						<TextField
 							defaultValue={props.description}
 							errorMessage={descError}
@@ -62,13 +87,14 @@ const Personal = props => {
 							register={register({
 								maxLength: {
 									value: "280",
-									message: "Longer than 280 characters"
-								}
+									message: "Longer than 280 characters",
+								},
 							})}
 						/>
+
 						<div className={classes.ButtonsContainer}>
-							<Button color={primaryButtonColor}>update</Button>
-							<Button color={secondaryButtonColor} onClick={props.onCloseModal} outlined>
+							<Button color={pinkDark}>update</Button>
+							<Button color={textPrimary} onClick={props.onCloseModal} outlined>
 								cancel
 							</Button>
 						</div>
@@ -77,8 +103,10 @@ const Personal = props => {
 				<div>
 					{props.name}
 					{props.description}
+					{props.instrument}
+					<InstrumentIcon primary={pinkDark} secondary={pinkLight} />
 				</div>
-				<Button color={primaryButtonColor} onClick={props.onShowModal} outlined>
+				<Button color={pinkDark} onClick={props.onShowModal} outlined>
 					edit
 				</Button>
 			</Paper>

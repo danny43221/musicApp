@@ -57,14 +57,3 @@ a:hover, a:focus {
 }
 
 
-textarea::-webkit-scrollbar {
-	width: 0.40rem;
-}
-
-textarea::-webkit-scrollbar-track {
-	background: #1e1e24;
-}
-
-textarea::-webkit-scrollbar-thumb {
-	background: var(--text-primary);
-}

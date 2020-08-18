@@ -15,6 +15,7 @@ const Profile = props => {
 			<Personal
 				name={user.name}
 				description={user.description}
+				instrument={user.instrument}
 				showModal={showModal}
 				onCloseModal={() => setShowModal(false)}
 				onShowModal={() => setShowModal(true)}

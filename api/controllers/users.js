@@ -26,22 +26,26 @@ exports.getUser = asyncHandler(async (req, res, next) => {
 });
 
 // @desc      Update user
-// @route     PUT /api/v1/users/
+// @route     PUT /api/v1/users
 // @access    Private
 exports.updateUser = asyncHandler(async (req, res, next) => {
-	const updateFields = {}
+	const updateFields = {};
 
 	if (req.body.name) {
-		updateFields['name'] = req.body.name
+		updateFields["name"] = req.body.name;
 	}
 
 	if (req.body.description !== undefined) {
-		updateFields['description'] = req.body.description
+		updateFields["description"] = req.body.description;
+	}
+
+	if (req.body.instrument) {
+		updateFields["instrument"] = req.body.instrument;
 	}
 
 	const user = await User.findByIdAndUpdate(req.user.id, updateFields, {
 		new: true,
-		runValidators: true
+		runValidators: true,
 	});
 
 	res.status(200).json({

@@ -7,6 +7,7 @@ import PianoIcon from './PianoIcon'
 import SaxophoneIcon from './SaxophoneIcon'
 import TrumpetIcon from './TrumpetIcon'
 import ViolinIcon from './ViolinIcon'
+import None from './None'
 
 export {
    ClarinetIcon,
@@ -17,5 +18,6 @@ export {
    PianoIcon,
    SaxophoneIcon,
    TrumpetIcon,
-   ViolinIcon
+   ViolinIcon,
+   None
 }

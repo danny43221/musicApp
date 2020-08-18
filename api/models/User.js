@@ -1,29 +1,46 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const crypto = require("crypto")
+const crypto = require("crypto");
 
 const UserSchema = new mongoose.Schema({
 	email: {
 		type: String,
 		required: [true, "Email is required"],
 		match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please enter a valid email"],
-		unique: true
+		unique: true,
 	},
 	password: {
 		type: String,
 		minlength: 8,
 		required: [true, "Password is required"],
-		select: false
+		select: false,
 	},
 	name: {
 		type: String,
 		maxlength: 15,
-		default: 'unknown',
+		default: "unknown",
 	},
 	description: {
 		type: String,
 		maxlength: 280,
-		default: 'Has not written a description yet'
+		default: "Has not written a description yet",
+	},
+	instrument: {
+		type: String,
+		default: "none",
+		required: "Instrument is required",
+		enum: [
+			"clarinet",
+			"percussion",
+			"flute",
+			"guitar",
+			"vocals",
+			"piano",
+			"saxophone",
+			"trumpet",
+			"violin",
+			"none",
+		],
 	},
 	resetPasswordToken: String,
 	resetPasswordExpire: Date,
@@ -54,6 +71,5 @@ UserSchema.methods.getResetPasswordToken = function () {
 	this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
 	return resetToken;
 };
-
 
 module.exports = mongoose.model("User", UserSchema);
