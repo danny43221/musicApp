@@ -39,7 +39,7 @@
    fill: none;
 	stroke-width: 2;
 	stroke-linecap: round;
-	animation: progress 1.5s ease-out forwards;
+	animation: progress .8s ease-out forwards;
 }
 
 .CircleBackground {

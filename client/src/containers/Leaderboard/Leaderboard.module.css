@@ -1,0 +1,42 @@
+.SectionContainer {
+   display: flex;
+}
+
+.Section {
+   flex: 1;
+}
+
+.SectionRank {
+   font-size: 1.2rem;
+   margin: auto 1.2rem;
+   margin-left: -1.5rem;
+   width: 3.5rem;
+   text-align: right;
+   padding-bottom: .9rem;
+}
+
+.Key {
+   display: flex;
+   color: var(--text-secondary);
+   font-size: 1.5rem;
+}
+
+.KeyNumber {
+   margin-left: 1.3rem;
+}
+
+.KeyName {
+   margin-left: 7.3rem;
+   margin-right: auto;
+}
+
+.KeySection {
+   text-align: center;
+   margin-left: 5.3vw;
+}
+
+@media only screen and (max-width: 850px) {
+	.KeySection {
+      display: none;
+   }
+}

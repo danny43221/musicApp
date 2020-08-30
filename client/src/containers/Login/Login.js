@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../shared/axios-api";
 import { useForm } from "react-hook-form";
-import TextInput from "../../components/UI/Inputs/TextInput/TextInput"
+import TextInput from "../../components/UI/Inputs/TextInput/TextInput";
 import EnvelopeIcon from "../../assets/icons/light/EnvelopeIcon";
 import LockIcon from "../../assets/icons/light/LockIcon";
 import classes from "./Login.module.css";
@@ -24,7 +24,7 @@ const Login = props => {
 			.post("/auth/login", data)
 			.then(res => {
 				setIsAuthenticated(true);
-				setUser(res.data.data)
+				setUser(res.data.data);
 			})
 			.catch(err => {
 				const email = document.getElementById("email");

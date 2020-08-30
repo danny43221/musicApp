@@ -4,12 +4,12 @@ import classes from "./PercentChart.module.css";
 const PercentChart = props => {
 	return (
 		<div className={classes.PercentChart}>
-         <div className={classes.Label}>
+			<div className={classes.Label}>
 				<div className={classes.Value}>
-					<div className={classes.Percent}>{props.percent}</div>
+					<div className={classes.Percent}>{(props.percent * 100).toFixed(0)}</div>
 					<div className={classes.PercentSymbol}>%</div>
 				</div>
-            <div className={classes.LabelText}>{props.label}</div>   
+				<div className={classes.LabelText}>{props.label}</div>
 			</div>
 
 			<svg viewBox="0 0 36 36">
@@ -25,7 +25,7 @@ const PercentChart = props => {
 					d="M18 2.0845
       a 15.9155 15.9155 0 0 1 0 31.831
       a 15.9155 15.9155 0 0 1 0 -31.831"
-					stroke-dasharray={`${props.percent}, 100`}
+					stroke-dasharray={`${props.percent * 100}, 100`}
 				/>
 			</svg>
 		</div>

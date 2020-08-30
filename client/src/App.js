@@ -8,6 +8,8 @@ import HomeLayout from "./components/Layouts/HomeLayout/HomeLayout";
 import axios from "./shared/axios-api";
 import { AuthContext } from "./shared/AuthContext";
 import Profile from "./containers/Profile/Profile";
+import Leaderboard from "./containers/Leaderboard/Leaderboard"
+import User from './containers/User/User'
 import Loader from "./components/UI/Loader/Loader";
 
 const App = props => {
@@ -28,7 +30,10 @@ const App = props => {
 				setUser({});
 				setIsLoading(false);
 			});
-	}, []);
+		return () => {
+			localStorage.clear()
+		}
+	}, [isAuthenticated]);
 
 	let content;
 	if (isLoading) {
@@ -49,6 +54,8 @@ const App = props => {
 			<HomeLayout>
 				<Switch>
 					<Route path="/profile" component={Profile} />
+					<Route path="/leaderboard/:id" component={User} />
+					<Route path="/leaderboard" component={Leaderboard} />
 					<Redirect to="/profile" />
 				</Switch>
 			</HomeLayout>

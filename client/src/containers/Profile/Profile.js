@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import classes from "./Profile.module.css";
 import { AuthContext } from "../../shared/AuthContext";
-import WinLoss from "../../components/User/WinLoss/WinLoss";
-import NoteAccuracy from "../../components/User/NoteAccuracy/NoteAccuracy";
-import LastGames from "../../components/User/LastGames/LastGames";
-import Personal from "../../components/User/Personal/Personal";
+import WinLoss from "../../components/Profile/WinLoss/WinLoss";
+import NoteAccuracy from "../../components/Profile/NoteAccuracy/NoteAccuracy";
+import LastGames from "../../components/Profile/LastGames/LastGames";
+import Personal from "../../components/Profile/Personal/Personal";
 
 const Profile = props => {
 	const [showModal, setShowModal] = useState(false);
@@ -20,9 +20,10 @@ const Profile = props => {
 				onCloseModal={() => setShowModal(false)}
 				onShowModal={() => setShowModal(true)}
 				setUser={setUser}
+				editable
 			/>
-			<WinLoss wins={5} losses={34} />
-			<NoteAccuracy accuracy={30} />
+			<WinLoss wins={user.stats.wins} losses={user.stats.losses} />
+			<NoteAccuracy accuracy={user.stats.noteAccuracy} />
 			<LastGames
 				values={[
 					{ accuracy: 100, won: true },

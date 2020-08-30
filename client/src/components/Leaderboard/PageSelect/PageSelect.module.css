@@ -1,0 +1,46 @@
+.PageSelect {
+   display: flex;
+   justify-content: center;
+   margin-top: 1.5rem;
+   align-content: center;
+}
+
+.PageLink {
+   margin: .7rem;
+   cursor: pointer;
+   border: 1px solid var(--text-primary);
+   padding: .2rem .8rem;
+   border-radius: .6rem;
+   transition: all var(--transition-speed) ease;
+   font-weight: 600;
+}
+
+.CurrentPage {
+   color: red
+}
+
+.PageLink:hover {
+   border-color: var(--blue-dark);
+   background-color: var(--blue-dark);
+   color: var(--bg-secondary);
+}
+
+.Active {
+   border-color: var(--blue-dark);
+   background-color: var(--blue-dark);
+   color: var(--bg-secondary);
+}
+
+.Left {
+   transform: rotate(90deg);
+   margin-right: 2.5rem;
+   cursor: pointer;
+   transform-origin: center;
+}
+
+.Right {
+   transform: rotate(-90deg);
+   margin-left: 2.5rem;
+   cursor: pointer;
+   transform-origin: center;
+}

@@ -31,14 +31,13 @@ const advanvedResults = (model, populate) => async (req, res, next) => {
       const sortBy = req.query.sort.split(',').join(' ')
       query = query.sort(sortBy)
    } else {
-      query = query.sort('-createdAt')
+      query = query.sort('-stats.skill')
    }
 
    //Pagination
    const page = parseInt(req.query.page, 10) || 1
    const limit = parseInt(req.query.limit, 10) || 25
    const startIndex = (page - 1) * limit
-   const endIndex = page * limit
    const total = await model.countDocuments(JSON.parse(queryStr))
 
    query = query.skip(startIndex).limit(limit)
@@ -50,21 +49,10 @@ const advanvedResults = (model, populate) => async (req, res, next) => {
    //Executing query
    const results = await query
 
-   //Pagination result
-   const pagination = {}
-
-   if (endIndex < total) {
-      pagination.next = {
-         page: page + 1,
-         limit
-      }
-   }
-
-   if (startIndex > 0) {
-      pagination.prev = {
-         page: page - 1,
-         limit
-      }
+   //Pagination results
+   const pagination = {
+      limit,
+      totalPages: Math.ceil(total / limit)
    }
 
    res.advancedResults = {

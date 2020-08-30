@@ -1,0 +1,38 @@
+.Section {
+   display: flex;
+   align-content: center;
+}
+
+.Circle {
+   border-radius: 50%;
+   border: .3px solid var(--text-primary);
+   height: 3.4rem;
+   width: 3.4rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.Name {
+   margin: auto 1rem;
+   margin-right: auto;
+   color: var(--text-secondary);
+   font-size: 1.7rem;
+}
+
+.Stat {
+   margin: auto 0;
+   margin-left: 6vw;
+   width: 7rem;
+   text-align: center;
+}
+
+.Percent {
+   font-size: 1rem;
+}
+
+@media only screen and (max-width: 850px) {
+	.Stat {
+      display: none;
+   }
+}

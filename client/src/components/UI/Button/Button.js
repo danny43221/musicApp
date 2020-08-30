@@ -6,7 +6,7 @@ const Button = props => {
 	let style = {
 		backgroundColor: color,
 		border: "1.5px solid " + color,
-		width
+		width,
 	};
 	if (outlined) {
 		style = {
@@ -17,10 +17,9 @@ const Button = props => {
 	}
 
 	return (
-			<button className={classes.Button} style={style} {...rest}>
-				{children}
-			</button>
-		
+		<button className={classes.Button} style={style} {...rest}>
+			{children}
+		</button>
 	);
 };
 

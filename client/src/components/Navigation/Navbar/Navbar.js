@@ -47,7 +47,7 @@ const Navbar = props => {
 				</li>
 				<li className={classes.NavItem}>
 					<NavLink
-						to="/register"
+						to="/findmatch"
 						className={classes.NavLink}
 						activeClassName={classes.ActiveLink}
 					>
@@ -57,7 +57,7 @@ const Navbar = props => {
 				</li>
 				<li className={classes.NavItem}>
 					<NavLink
-						to="/login"
+						to="/leaderboard"
 						className={classes.NavLink}
 						activeClassName={classes.ActiveLink}
 					>

@@ -17,8 +17,8 @@ const UserSchema = new mongoose.Schema({
 	},
 	name: {
 		type: String,
-		maxlength: 15,
-		default: "unknown",
+		maxlength: 20,
+		default: "Anonymous Musician",
 	},
 	description: {
 		type: String,
@@ -42,6 +42,27 @@ const UserSchema = new mongoose.Schema({
 			"none",
 		],
 	},
+	stats: {
+		wins: {
+			type: Number,
+			default: 0,
+		},
+		losses: {
+			type: Number,
+			default: 0,
+		},
+		winLoss: Number,
+		notesPlayed: {
+			type: Number,
+			default: 0,
+		},
+		correctNotesPlayed: {
+			type: Number,
+			default: 0,
+		},
+		noteAccuracy: Number,
+		skill: Number,
+	},
 	resetPasswordToken: String,
 	resetPasswordExpire: Date,
 	createdAt: {
@@ -59,6 +80,14 @@ UserSchema.pre("save", async function (next) {
 	this.password = await bcrypt.hash(this.password, salt);
 });
 
+//Update stats
+UserSchema.pre("save", function (next) {
+	this.stats.winLoss = this.calculateWinLoss();
+	this.stats.noteAccuracy = this.calculateNoteAccuracy();
+	this.stats.skill = this.calculateSkill();
+	next();
+});
+
 //Match user's hashed password
 UserSchema.methods.matchPassword = async function (enteredPassword) {
 	return await bcrypt.compare(enteredPassword, this.password);
@@ -70,6 +99,34 @@ UserSchema.methods.getResetPasswordToken = function () {
 	this.resetPasswordToken = crypto.createHash("sha256").update(resetToken).digest("hex");
 	this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
 	return resetToken;
+};
+
+//Calculate win/loss ratio
+UserSchema.methods.calculateWinLoss = function () {
+	let winLoss;
+	if (this.stats.losses === 0) {
+		winLoss = this.stats.wins;
+	} else {
+		winLoss = this.stats.wins / this.stats.losses;
+	}
+	return winLoss;
+};
+
+//Calculate note accuracy
+UserSchema.methods.calculateNoteAccuracy = function () {
+	let noteAccuracy;
+	if (this.stats.notesPlayed === 0) {
+		noteAccuracy = 0;
+	} else {
+		noteAccuracy = this.stats.correctNotesPlayed / this.stats.notesPlayed;
+	}
+	return noteAccuracy;
+};
+
+//Calculate skill
+UserSchema.methods.calculateSkill = function () {
+	const { winLoss, noteAccuracy, wins, losses } = this.stats;
+	return winLoss * noteAccuracy * (wins + losses);
 };
 
 module.exports = mongoose.model("User", UserSchema);

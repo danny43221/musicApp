@@ -1,0 +1,14 @@
+.User {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+   gap: 4.5rem;
+   align-items: stretch;
+}
+
+.LoaderContainer {
+   position: relative;
+   height: 80vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
