@@ -11,7 +11,7 @@ const Leaderboard = props => {
 	const [users, setUsers] = useState([]);
 	const [page, setPage] = usePersistedState("page", 1);
 	const [totalPages, setTotalPages] = useState(0);
-	const [limit, setLimit] = useState(25);
+	const [limit, setLimit] = useState(20);
 
 	const { user } = useContext(AuthContext);
 

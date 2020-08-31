@@ -1,0 +1,32 @@
+.Piano {
+   display: flex;
+   height: 40rem;
+}
+
+.WhiteKey {
+   margin: 0 .53%;
+   flex: 1;
+   background-color: var(--text-secondary);
+   transition: all var(--transition-speed) ease;
+   border-bottom-left-radius: 2vw;
+   border-bottom-right-radius: 2vw;
+}
+
+.WhiteKey:hover {
+   box-shadow: 0rem 0rem 8vw 1vw var(--pink-dark) inset;
+}
+
+.BlackKey {
+   background-color: var(--bg-secondary);
+   flex: 0.6;
+   margin: 0 -3.99%;
+   z-index: 2;
+   height: 58%;
+   border-bottom-left-radius: 2.7vw;
+   border-bottom-right-radius: 2.7vw;
+   transition: all var(--transition-speed) ease;
+}
+
+.BlackKey:hover {
+   box-shadow: 0rem 0rem 5vw 1vw var(--pink-dark) inset;
+}
