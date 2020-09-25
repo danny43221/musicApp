@@ -16,6 +16,7 @@ const Modal = props => {
 			top: "50%",
 			left: "50%",
 			right: "auto",
+			animation: "slide .4s ease",
 			zIndex: "500",
 			borderRadius: ".6rem",
 			border: "none",

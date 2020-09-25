@@ -56,4 +56,12 @@ a:hover, a:focus {
 	text-decoration: underline;
 }
 
-
+@keyframes slide {
+	0% {
+		opacity: 0;
+		top: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+}
