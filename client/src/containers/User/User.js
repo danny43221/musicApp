@@ -6,7 +6,6 @@ import NoteAccuracy from "../../components/Profile/NoteAccuracy/NoteAccuracy";
 import LastGames from "../../components/Profile/LastGames/LastGames";
 import Personal from "../../components/Profile/Personal/Personal";
 import Loader from "../../components/UI/Loader/Loader";
-import Button from "../../components/UI/Button/Button";
 import { Link } from "react-router-dom";
 
 const User = props => {
@@ -31,7 +30,9 @@ const User = props => {
 	} else {
 		content = (
 			<>
-				<Link to="/leaderboard">&larr; Go back</Link>
+				<div style={{ textAlign: "right" }}>
+					<Link to="/leaderboard">&larr; Go back</Link>
+				</div>
 				<div className={classes.User}>
 					<Personal
 						name={user.name}

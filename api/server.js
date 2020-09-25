@@ -1,4 +1,5 @@
 const express = require("express");
+const http = require("http");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -12,6 +13,7 @@ const helmet = require("helmet");
 const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
+const socketio = require("socket.io");
 
 //Load env vars
 dotenv.config({ path: "./config/config.env" });
@@ -21,9 +23,47 @@ connectDB();
 
 //Route files
 const auth = require("./routes/auth");
-const users = require("./routes/users")
+const users = require("./routes/users");
 
 const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+
+//Socket
+
+io.on("connection", socket => {
+	console.log(`connected: ${socket.id}`);
+
+	socket.on("join", data => {
+		const { userId, room } = data;
+		if (socket.room) socket.leave(socket.room);
+		if (userId) socket.userId = userId;
+		socket.room = room;
+		socket.join(room);
+
+		const queueRoom = socket.adapter.rooms["queue"];
+		if (queueRoom && queueRoom.length >= 2) {
+			const socketIds = Object.keys(queueRoom.sockets);
+			const gameId = socketIds[0] + socketIds[1];
+			io.to(socketIds[0]).emit("start game", {
+				gameId,
+				opponentId: io.sockets.connected[socketIds[1]].userId,
+			});
+			io.to(socketIds[1]).emit("start game", {
+				gameId,
+				opponentId: io.sockets.connected[socketIds[0]].userId,
+			});
+		}
+		console.log(`Socket ${socket.id} joining ${room}`);
+	});
+
+	socket.on("disconnect", () => {
+		if (socket.room && socket.room != "queue") {
+			io.to(socket.room).emit("left game");
+		}
+		console.log(`disconnected: ${socket.id}`);
+	});
+});
 
 //Middleware
 app.use(express.json());
@@ -36,7 +76,6 @@ app.use(
 	cors({
 		origin: "http://localhost:3000",
 		credentials: true,
-		
 	})
 );
 
@@ -67,16 +106,17 @@ const limiter = rateLimit({
 	windowMs: 10 * 60 * 1000,
 	max: 1000,
 });
-app.use(limiter)
+app.use(limiter);
 
 app.use(hpp());
 
 //Mount routes
 app.use("/api/v1/auth", auth);
-app.use("/api/v1/users", users)
+app.use("/api/v1/users", users);
 
 const PORT = process.env.PORT || 5000;
-const server = app.listen(
+
+server.listen(
 	PORT,
 	console.log(`Server running in ${process.env.NODE_ENV} on port ${process.env.PORT}`)
 );

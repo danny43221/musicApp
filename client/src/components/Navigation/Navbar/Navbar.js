@@ -47,7 +47,7 @@ const Navbar = props => {
 				</li>
 				<li className={classes.NavItem}>
 					<NavLink
-						to="/findmatch"
+						to="/match"
 						className={classes.NavLink}
 						activeClassName={classes.ActiveLink}
 					>

@@ -53,7 +53,7 @@ const Register = props => {
 	return (
 		<AuthLayout>
 			<Oauth />
-			<Break>or</Break>
+			<Break uppercase>or</Break>
 			<form onSubmit={handleSubmit(onSubmit)} className={classes.RegisterForm}>
 				<TextInput
 					name="email"

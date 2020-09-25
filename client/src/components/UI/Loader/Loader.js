@@ -1,10 +1,13 @@
 import React from "react";
 import classes from "./Loader.module.css";
 
-const Loader = () => {
+const Loader = props => {
 	return (
 		<div className={classes.Container}>
-			<div className={classes.Loader}>Loading...</div>
+			{props.label && <div className={classes.Label}>{props.label}</div>}
+			<div className={classes.LoaderContainer}>
+				<div className={classes.Loader}>Loading...</div>
+			</div>
 		</div>
 	);
 };

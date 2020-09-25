@@ -48,7 +48,7 @@ const Login = props => {
 	return (
 		<AuthLayout>
 			<Oauth />
-			<Break>or</Break>
+			<Break uppercase>or</Break>
 			<form onSubmit={handleSubmit(onSubmit)} className={classes.LoginForm}>
 				<TextInput
 					name="email"

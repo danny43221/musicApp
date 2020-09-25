@@ -11,7 +11,7 @@ const Break = props => {
 		);
 	} else {
 		br = (
-			<div className={classes.Break} style={{ padding: props.margin }}>
+			<div className={classes.Break} style={{ padding: props.margin, textTransform: props.uppercase ? 'uppercase': 'none'}}>
 				<div className={classes.Line}></div>
 				<span className={classes.BreakText}>{props.children}</span>
 				<div className={classes.Line}></div>

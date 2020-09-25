@@ -2,7 +2,7 @@ import React from "react";
 
 const ClarinetIcon = props => {
 	return (
-		<svg height={props.size || '4rem'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+		<svg height={props.size || '4rem'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" style={{transform: "translateY(1.4%)"}}>
 			<path
 				d="M630.13 129.22a16 16 0 0 0-17.44 3.47L569.38 176H101.2a32 32 0 0 0-10.13 1.64l-80.13 26.71A16 16 0 0 0 0 219.53v72.94a16 16 0 0 0 10.94 15.18l80.13 26.71A32 32 0 0 0 101.2 336h468.18l43.31 43.31A16 16 0 0 0 640 368V144a16 16 0 0 0-9.87-14.78zM272 280a24 24 0 1 1 24-24 24 24 0 0 1-24 24zm96 0a24 24 0 1 1 24-24 24 24 0 0 1-24 24zm96 0a24 24 0 1 1 24-24 24 24 0 0 1-24 24z"
 				class="fa-secondary"

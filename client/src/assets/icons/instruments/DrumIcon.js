@@ -2,7 +2,7 @@ import React from "react";
 
 const DrumIcon = props => {
 	return (
-		<svg height={props.size || '4rem'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+		<svg height={props.size || '4rem'} transform="scale(300%)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{transform: "translateX(-1%)"}}>
 			<path
 				d="M256 352a24 24 0 0 0-24 24v103.47c7.91.32 15.9.53 24 .53s16.09-.21 24-.53V376a24 24 0 0 0-24-24zM96 320a24 24 0 0 0-24 24v101.76a327.89 327.89 0 0 0 48 17V344a24 24 0 0 0-24-24zm320 0a24 24 0 0 0-24 24v118.77a327.89 327.89 0 0 0 48-17V344a24 24 0 0 0-24-24zm93.31-267.56l-8.87-13.31a16 16 0 0 0-22.19-4.44L232.88 192.94a16 16 0 0 0-4.44 22.19l8.87 13.31a16 16 0 0 0 22.19 4.44L504.88 74.63a16 16 0 0 0 4.43-22.19z"
 				class="fa-secondary"

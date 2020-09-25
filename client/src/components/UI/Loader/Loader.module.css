@@ -64,3 +64,14 @@
    left: 50%;
    transform: translate(-50%, -50%);
 }
+
+.Label {
+	font-size: 1.8rem;
+	color: var(--text-secondary);
+	text-align: center;
+	margin-bottom: 5rem;
+}
+
+.LoaderContainer {
+	height: 5rem;
+}

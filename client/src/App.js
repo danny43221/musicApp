@@ -55,7 +55,7 @@ const App = props => {
 			<HomeLayout>
 				<Switch>
 					<Route path="/profile" component={Profile} />
-					<Route path="/findmatch" component={FindMatch} />
+					<Route path="/match" component={FindMatch} />
 					<Route path="/leaderboard/:id" component={User} />
 					<Route path="/leaderboard" component={Leaderboard} />
 					<Redirect to="/profile" />

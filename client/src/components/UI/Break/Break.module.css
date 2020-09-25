@@ -7,7 +7,9 @@
 .BreakText {
    margin: 0 1rem;
    font-size: 1rem;
-   text-transform: uppercase;
+   word-wrap: none;
+   hyphens: none;
+   white-space: nowrap;
 }
 
 .Line {

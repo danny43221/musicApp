@@ -1,3 +1,25 @@
-.FindMatch {
-   
+
+.Card {
+	width: 60rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+}
+
+
+.LinkContainer {
+	text-align: right;
+}
+
+.Link {
+	text-decoration: none;
+   color: var(--blue-dark);
+	cursor: pointer;
+}
+
+.Link:hover,
+.Link:focus {
+	text-decoration: underline;
 }

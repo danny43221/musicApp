@@ -1,6 +1,8 @@
 .Content {
    margin-left: 8rem;
    padding: 4.5rem;
+   min-height: 100vh;
+   position: relative;
 }
 
 @media only screen and (max-width: 600px) {
@@ -8,5 +10,4 @@
       margin-left: 0;
       padding-bottom: 12.5rem;
    }
-
 }
