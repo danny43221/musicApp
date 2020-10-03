@@ -31,7 +31,7 @@ const Navbar = props => {
 			<ul className={classes.NavbarNav}>
 				<li className={classes.Logo}>
 					<div className={classes.NavLink}>
-						<span className={classes.LinkText}>TUNRLINK</span>
+						<span className={classes.LinkText}>COTUNER</span>
 						<NavArrowIcon primary="#FFFFFF88" secondary="#FFFFFFDD" />
 					</div>
 				</li>

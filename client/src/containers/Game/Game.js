@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Game.module.css";
-import OpponentModal from '../../components/Game/OpponentModal/OpponentModal'
+import Piano from "../../components/Game/Piano/Piano";
+import OpponentModal from "../../components/Game/OpponentModal/OpponentModal";
 import { subscribeToOpponentConnection } from "../../shared/socket";
 
 export const Game = props => {
@@ -8,7 +9,7 @@ export const Game = props => {
 
 	useEffect(() => {
 		const modalTimeout = setTimeout(() => {
-			setShowOpponent(false)
+			setShowOpponent(false);
 		}, 4400);
 
 		subscribeToOpponentConnection(err => {
@@ -18,12 +19,18 @@ export const Game = props => {
 
 		return () => {
 			clearTimeout(modalTimeout);
-		}
+		};
 	}, []);
 
 	return (
 		<div>
-			<OpponentModal opponent={props.opponent} show={showOpponent} onClose={() => setShowOpponent(false)} />
+			<OpponentModal
+				opponent={props.opponent}
+				show={showOpponent}
+				onClose={() => setShowOpponent(false)}
+			/>
+			<Piano octave={1} />
+
 			<button onClick={props.disconnect}>leavr</button>
 		</div>
 	);

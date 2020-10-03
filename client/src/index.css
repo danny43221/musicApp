@@ -1,20 +1,23 @@
-
 :root {
 	--text-primary: #b6b6b6;
 	--text-secondary: #ececec;
 	--bg-primary: #23232e;
 	--bg-secondary: #141418;
-	--transition-speed: .4s;
+	--transition-speed: 0.4s;
 
-	--blue-dark: #7BDFF2;
-	--blue-light: #B2F7EF;
+	--blue-dark: #7bdff2;
+	--blue-light: #b2f7ef;
 
 	--pink-light: #ff7eee;
 	--pink-dark: #df49a6;
 }
 
+html {
+	overflow-y: scroll;
+}
 
-html, body {
+html,
+body {
 	font-size: 62.5%;
 }
 
@@ -22,7 +25,7 @@ body {
 	position: relative;
 	font-size: 1.6rem;
 	box-sizing: border-box;
-	font-family: 'Nunito', sans-serif;
+	font-family: "Nunito", sans-serif;
 	color: var(--text-primary);
 	background-color: var(--bg-secondary);
 }
@@ -36,7 +39,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-	width: 0.40rem;
+	width: 0.4rem;
 }
 
 body::-webkit-scrollbar-track {
@@ -52,7 +55,8 @@ a {
 	color: var(--blue-dark);
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
 	text-decoration: underline;
 }
 

@@ -51,7 +51,10 @@ const UserSchema = new mongoose.Schema({
 			type: Number,
 			default: 0,
 		},
-		winLoss: Number,
+		winLoss: {
+			type: Number,
+			default: 0,
+		},
 		notesPlayed: {
 			type: Number,
 			default: 0,
